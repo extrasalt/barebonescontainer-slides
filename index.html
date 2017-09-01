@@ -30,32 +30,50 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background="#e74c3c">
-					<p>Container Orchestration</p>
-					<small>Chennai Docker Meetup: March 2017</small>
-				</section>
-				<section>
-					<h2>Who am I?</h2>
-					<p>Mohanarangan Muthukumar</p>
-					<p><small>github.com/extrasalt</small></p>				
-					<p><small>extrasalt.org</small></p>
-				</section>
-
 				<section>
 					<img src="images/docker.png">
 				</section>
-
 				<section>
-					<h4>Docker</h4>
-					<ul>
-						<li>Cgroups and namespaces</li>
-						<li>Application containers vs Machine containers</li>
-						<li>Shipping your machine</li>
-						<li>Communication only through ports</li>
-					</ul>
+					 <div>
+                        <h2>Who am I?</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                            <div>
+                                <p>Mohanarangan <br> Muthukumar</p>
+                            </div>
+                            </td>
+                            <td>
+                            <small>
+                            	<b>extrasalt.org</b> <br>
+                                <b>github: @extrasalt</b> <br>
+                                <b>twitter: @extrasaltorg</b>
+                            </small>
+                            </td>
+                        </tr>
+                    </table>
+                   
+                    <div>
+                        
+                    </div>
+				</section>
+				<section>
+					<p>Dissecting Docker Containers</p>
+					<small>Chennai Docker Meetup: September 2017</small>
 				</section>
 
 				<section>
+					<h2>What is Docker?</h2>
+					<p>WorksOnMyMachine™</p>
+				</section>
+
+				<section>
+					Something.. Shipping container
+				</section>
+
+				<section>
+					<h2>How to do this docker thing?</h2>
 					Pull the image
 					<pre><code class="hljs" style="word-wrap: break-word;">$ docker pull alpine	</code></pre>
 
@@ -64,7 +82,7 @@
 
 
 					Create a container and attach to it
-					<pre><code class="hljs" style="word-wrap: break-word;">$ docker run -it alpine /bin/sh</code></pre>					
+					<pre><code class="hljs" style="word-wrap: break-word;">$ docker run -it alpine /bin/sh</code></pre>		
 				</section>
 
 				<section>
@@ -82,17 +100,18 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 				</section>
 
 				<section>
-					<h3>What is orchestration?</h3>
+					<h4>Docker</h4>
 					<ul>
-						<li>Manage resources.</li>
-						<li>Schedule tasks</li>
-						<li>Monitoring</li>
-						<li>Managing the tasks</li>
+						<li>Cgroups and namespaces</li>
+						<li>Application containers vs Machine containers</li>
+						<li>Shipping your machine</li>
+						<li>Communication only through ports</li>
 					</ul>
 				</section>
 
-				<section data-background="#384d54">
-					Swarm mode
+
+				<section>
+					<img src="images/swarm.png">
 				</section>
 
 				<section>
@@ -106,152 +125,54 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 				</section>
 
 				<section>
-					<ul>
-						<li>Easy to setup. Docker-machine and docker swarm init</li>
-						<li>It has an internal raft implementation</li>
-						<li>Imperative vs Declarative</li>
-					</ul>
+					Let's Dissect
 				</section>
 
 				<section>
-					<img src="images/mesos.png">
+					<img src="images/dockermagic.jpg" alt="">
 				</section>
 
 				<section>
-					Why do we need it?
+					Containerd
 				</section>
 
 				<section>
-					<ul>
-						<li>Mesos master, mesos slave</li>
-						<li>Frameworks</li>
-						<li>Applications</li>
-					</ul>
+					Runc
+				</section>
+
+				<section data-background="images/wntgd.jpg">
 				</section>
 
 				<section>
-					Two-level scheduling
+					Namespaces
 				</section>
+
 
 				<section>
-					<ul>
-						<li>Marathon</li>
-						<li>Chronos</li>
-					</ul>
+					 <div>
+                        <h2>Thank you. </h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                            <div>	
+                                <p>Mohanarangan <br> Muthukumar</p>
+                            </div>
+                            </td>
+                            <td>
+                            <small>
+                            	<b>extrasalt.org</b> <br>
+                                <b>github: @extrasalt</b> <br>
+                                <b>twitter: @extrasaltorg</b>
+                            </small>
+                            </td>
+                        </tr>
+                    </table>
+                   
+                    <div>
+                        
+                    </div>
 				</section>
-
-				<section>
-					Why not mesos? Pre-dates containers and schedules jobs instead of pods. 
-				</section>
-
-				<section>
-					<img src="images/kube.png" width="200px" height="200px">
-				</section>
-
-				<section>
-						Jobs are restrictive as the only grouping mechanism
-for tasks... it’s not possible to
-refer to arbitrary subsets of a job, which leads to problems
-like inflexible semantics for rolling updates and job resizing.
-					<small>Large-scale cluster management at Google with Borg, Google Inc.</small>
-				</section>
-
-				<section>
-					<h3>Privitives</h3>
-					<ul>
-						<li>Pods</li>
-						<li>Nodes</li>
-						<li>Namespaces</li>
-						<li>Service</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>Higher level constructs</h3>
-					<ul>
-						<li>Replicasets</li>
-						<li>Statefulsets</li>
-						<li>Daemonsets</li>
-						<li>Deployments</li>
-						<li>Jobs</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>How to setup kubernetes? [Hint: Nightmare]</h3>
-					<ul>
-						<li>minikube</li>
-						<li>Juju for Canonical distribution of kubernetes</li>
-						<li>Kargo</li>
-						<li>Kops</li>
-						<li>Terraform</li>
-						<li>Bootkube</li>
-						<li>Just use GKE</li>
-					</ul>
-				</section>
-
-				<section>
-					How to use Kubernetes? 
-					Kubectl/Kubernetes API
-				</section>
-
-				<section>
-					<h2>Container orchestrator</h2>
-					<ul>
-					<li>Manages resources (nodes) </li>
-					<li>Schedules tasks (Pods)</li>
-					<li>Monitors tasks</li>
-					<li>Gives you a way to manage tasks (kubectl and the API)</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Operating system kernel</h2>
-					<ul>
-					<li>Manages resources</li>
-					<li>Schedules tasks</li>
-					<li>Monitors tasks</li>
-					<li>Gives you a way to manage tasks</li>
-					</ul>
-				</section>
-
-				<section>
-We must treat the datacenter itself as one massive warehouse-scale computer (WSC) 
-<small>Luiz André Barroso, Urs Hölzle Datacenter, The Data Center as a Computer</small>
-				</section>
-
-				<section>
-					Kubernetes is the kernel of the datacenter
-				</section>
-
-				<section>
-					Running kubernetes on VMs is wasteful
-				</section>
-
-				<section data-background="#e74c3c">
-					<p id="podder">Podder</p>
-					<p><small>github.com/extrasalt/podder</small></p>
-				</section>
-
-				<section>
-					<ul>
-						<li>Can deploy self-contained golang binaries</li>
-						<li>By just drag dropping</li>
-						<li>It's multi-tentant</li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>Demo time*</h1>
-					<small>*if God wills it.</small> 
-				</section>
-
-				<section>
-					<p>@extrasaltorg</p>
-					<p>Thank you. </p>
-
-				</section>
-
 
 			</div>
 		</div>
